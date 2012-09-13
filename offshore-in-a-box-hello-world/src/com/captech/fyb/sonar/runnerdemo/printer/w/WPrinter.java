@@ -14,4 +14,16 @@ this.helper = helper;
 	public void print() {
 		helper.o.println(MY_TEXT);
 	}
+	
+	private int doSomeCalculations(int y) {
+		int x = 5;
+		
+		x = y * 2;
+		
+		x = y + x;
+		
+		x = x * x + y * y;
+		
+		return x;
+	}
 }
