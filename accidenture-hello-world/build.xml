@@ -4,7 +4,7 @@
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. -->
-<project basedir="." default="build" name="accidenture-hello-world">
+<project basedir="." default="build" name="accidenture-hello-world" xmlns:jacoco="antlib:org.jacoco.ant">
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../../../ides/eclipse"/>
     <property name="debuglevel" value="source,lines,vars"/>
@@ -16,6 +16,20 @@
     <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
         <classpath path="${basedir}/lib/sonar-ant-task-1.4.jar" />
     </taskdef>
+    
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+        <classpath path="${basedir}/lib/jacocoant.jar"/>
+    </taskdef>
+    
+    <path id="JUnit4.libraryclasspath">
+    	<pathelement location="lib/junit.jar"/>
+    	<pathelement location="lib/hamcrest-core-1.1.jar"/>
+	</path>
+	<path id="MyProject.classpath">
+    	<pathelement location="bin"/>
+    	<path refid="JUnit4.libraryclasspath"/>
+	</path>
+    
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
@@ -48,6 +62,19 @@
             <classpath refid="accidenture-hello-world.classpath"/>
         </javac>
     </target>
+    <target depends="build-project" name="test">
+        <jacoco:coverage destfile="target/jacoco.exec">
+			<junit fork="true" printsummary="yes" haltonfailure="no">
+			  <classpath refid="MyProject.classpath" />
+			  
+			  <formatter type="xml"/>
+			
+			  <batchtest>
+			    <fileset dir="test"/>
+			  </batchtest>
+			</junit>
+		</jacoco:coverage>
+    </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
     <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
         <copy todir="${ant.library.dir}">
@@ -63,15 +90,22 @@
         <antcall target="build"/>
     </target>
     
+    <property name="sonar.surefire.reportsPath" value="." />
+    
 	<!-- Sonar Analysis Target-->
 	<target name="sonar">
 		<!-- list of mandatories Sonar properties -->
-		<property name="sonar.sources" value="${basedir}/src" />
+		<property name="sonar.sources" value="src" />
 		
 		<!-- list of optional Sonar properties -->
-		<property name="sonar.tests" value="${basedir}/test" />
-		<property name="sonar.libraries" value="${basedir}/lib" />
-		<property name="sonar.binaries" value="${basedir}/bin" />
+		<property name="sonar.tests" value="test" />
+		<property name="sonar.libraries" value="lib/junit.jar" />
+		<property name="sonar.binaries" value="bin" />
+		<property name="sonar.dynamicAnalysis" value="true" />
+		
+		<property name="sonar.jacoco.antTargets" value="test" />
+		<property name="sonar.core.codeCoveragePlugin" value="jacoco" />
+		
 		<sonar:sonar key="com.captech.fyb:accidenture-hello-world" version="0.1-SNAPSHOT" xmlns:sonar="antlib:org.sonar.ant"/>
 	</target>
 </project>
