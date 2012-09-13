@@ -1,13 +1,22 @@
 package com.captech.fyb.sonar.mvndemo.printer;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
+/**
+ * Test class for the HelloWorldPrinterHelper. This will ensure that this class
+ * works correctly.
+ * 
+ * @author mmehalso
+ * 
+ */
 public class HelloWorldPrinterHelperTest {
 
+	/**
+	 * Tests the Printer class.
+	 */
 	@Test
-	public void aFailingTest() {
-		fail();
+	public void testPrinter() {
+		HelloWorldPrinterHelper helper = new HelloWorldPrinterHelper();
+		helper.print();
 	}
 }

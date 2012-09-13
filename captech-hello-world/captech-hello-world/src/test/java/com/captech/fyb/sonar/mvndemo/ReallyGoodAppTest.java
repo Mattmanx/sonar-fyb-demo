@@ -1,38 +1,20 @@
 package com.captech.fyb.sonar.mvndemo;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class ReallyGoodAppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public ReallyGoodAppTest( String testName )
-    {
-        super( testName );
-    }
+public class ReallyGoodAppTest {
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( ReallyGoodAppTest.class );
-    }
+	@Test
+	public void testAppMain() {
+		String[] args = {};
+		ReallyGoodApp.main(args);
+	}
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+	@Test
+	public void testApp() {
+		ReallyGoodApp app = new ReallyGoodApp();
+	}
 }

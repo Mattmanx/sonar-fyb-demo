@@ -10,45 +10,21 @@ import java.io.PrintStream;
  */
 public class HelloWorldPrinterHelper {
 
-	public PrintStream o = System.out;
-
-	public LetterPrinter hPrinter;
-	public LetterPrinter ePrinter;
-	public LetterPrinter lPrinter;
-	public LetterPrinter oPrinter;
-	public LetterPrinter wPrinter;
-	public LetterPrinter rPrinter;
-	public LetterPrinter dPrinter;
+	/**
+	 * The static text to print 'Hello, World!'.
+	 */
+	private static final String HELLO_WORLD = "Hello, World!";
 
 	/**
-	 * Default constructor.
+	 * The PrintStream to use.
 	 */
-	public HelloWorldPrinterHelper() {
-		hPrinter = new LetterPrinter("h", o);
-		ePrinter = new LetterPrinter("e", o);
-		lPrinter = new LetterPrinter("l", o);
-		oPrinter = new LetterPrinter("o", o);
-		wPrinter = new LetterPrinter("w", o);
-		rPrinter = new LetterPrinter("r", o);
-		dPrinter = new LetterPrinter("d", o);
-	}
+	private PrintStream o = System.out;
 
 	/**
 	 * Prints "hello world"
 	 */
 	public void print() {
-		hPrinter.print();
-		ePrinter.print();
-		lPrinter.print();
-		lPrinter.print();
-		oPrinter.print();
-		o.print(" ");
-		wPrinter.print();
-		oPrinter.print();
-		rPrinter.print();
-		lPrinter.print();
-		dPrinter.print();
-
+		o.print(HELLO_WORLD);
 	}
 
 }
