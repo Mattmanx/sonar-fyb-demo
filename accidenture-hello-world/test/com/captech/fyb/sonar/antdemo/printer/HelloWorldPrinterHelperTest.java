@@ -1,4 +1,4 @@
-package com.capitalone.fyb.sonar.antdemo.printer;
+package com.captech.fyb.sonar.antdemo.printer;
 
 import static org.junit.Assert.fail;
 

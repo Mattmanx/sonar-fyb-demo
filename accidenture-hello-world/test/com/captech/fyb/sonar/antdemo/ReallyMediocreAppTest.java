@@ -1,6 +1,8 @@
-package com.capitalone.fyb.sonar.antdemo;
+package com.captech.fyb.sonar.antdemo;
 
 import org.junit.Test;
+
+import com.captech.fyb.sonar.antdemo.ReallyMediocreApp;
 
 /**
  * Tests the app.

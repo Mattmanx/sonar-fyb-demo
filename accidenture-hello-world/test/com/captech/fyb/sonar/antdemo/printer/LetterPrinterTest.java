@@ -1,8 +1,8 @@
-package com.capitalone.fyb.sonar.antdemo.printer;
+package com.captech.fyb.sonar.antdemo.printer;
 
 import org.junit.Test;
 
-import com.capitalone.fyb.sonar.antdemo.printer.LetterPrinter;
+import com.captech.fyb.sonar.antdemo.printer.LetterPrinter;
 
 public class LetterPrinterTest {
 

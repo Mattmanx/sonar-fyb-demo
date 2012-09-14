@@ -1,6 +1,6 @@
-package com.capitalone.fyb.sonar.antdemo;
+package com.captech.fyb.sonar.antdemo;
 
-import com.capitalone.fyb.sonar.antdemo.printer.HelloWorldPrinterHelper;
+import com.captech.fyb.sonar.antdemo.printer.HelloWorldPrinterHelper;
 
 public class ReallyMediocreApp {
 
